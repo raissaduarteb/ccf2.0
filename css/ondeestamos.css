@@ -27,4 +27,7 @@
   .local { grid-template-columns: 1fr; }
   .local__map { min-height: 300px; order: 2; }
 }
-@media (max-width: 600px) { .local__gallery { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 600px) {
+  .local__gallery { grid-template-columns: repeat(3, 1fr); }
+  .local__gallery.cols-2 { grid-template-columns: 1fr 1fr; }
+}

@@ -526,6 +526,10 @@
   .redes__grid {
     grid-template-columns: 1fr;
   }
+  .redes__feed,
+  .redes__feed iframe {
+    min-height: 520px;
+  }
 }
 @media (max-width: 560px) {
   .reun__grid {
@@ -534,10 +538,21 @@
   .pgm-card {
     grid-column: auto;
     grid-template-columns: 1fr;
+    position: relative;
   }
   .pgm-card > img {
-    aspect-ratio: 3/2;
-    order: -1;
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    aspect-ratio: unset;
+    object-fit: cover;
+    order: unset;
+    filter: brightness(0.35);
+  }
+  .pgm-card__body {
+    position: relative;
+    z-index: 1;
   }
   .schedule__sep {
     display: none;

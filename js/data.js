@@ -55,7 +55,7 @@ window.CCF_DATA = {
         { quando: "SÁBADO · 19H", titulo: "Reunião Ministerial" },
         { quando: "SEGUNDA · 19H30", titulo: "Reunião de Oração" },
       ],
-      galeria: ["images/reuniaodejovens.jpeg", "images/ministerial.jpeg"],
+      galeria: ["images/reuniaodejovens.jpeg", "images/ministerial.jpeg", "images/reuniaodepgm.jpeg"],
       mapa: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2065.4049096048966!2d-38.55146692653158!3d-3.8335878961402132!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x7c7514b66600253%3A0x4acc853b17f389!2sEspa%C3%A7o%20Premium%20eventos!5e0!3m2!1spt-BR!2sbr!4v1751995378666!5m2!1spt-BR!2sbr",
     },
   ],
