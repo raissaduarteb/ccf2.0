@@ -1,0 +1,33 @@
+/* ===========================================================
+   Variáveis globais de design (cores, tipografia, espaçamento)
+   =========================================================== */
+:root {
+  /* Cores de marca */
+  --brand:        #E94E1A;
+  --brand-dark:   #C7400F;
+  --brand-tint:   rgba(233, 78, 26, .10);
+  --peach:        #F1B79E;
+
+  /* Neutros */
+  --bg:           #F4F1EC;
+  --bg-alt:       #ECE7DE;
+  --ink:          #211F1C;
+  --ink-soft:     #5f5b54;
+  --ink-muted:    #6f6a62;
+  --charcoal:     #24211D;
+  --charcoal-dark:#1B1916;
+  --white:        #ffffff;
+  --line:         rgba(0, 0, 0, .08);
+
+  /* Tipografia */
+  --font-sans:  'Hanken Grotesk', system-ui, sans-serif;
+  --font-serif: 'Newsreader', Georgia, serif;
+
+  /* Layout */
+  --maxw:    1240px;
+  --radius:  18px;
+  --radius-lg: 24px;
+  --shadow-card: 0 2px 4px rgba(0,0,0,.04), 0 14px 30px rgba(0,0,0,.05);
+  --shadow-pop:  0 18px 40px rgba(0,0,0,.16);
+  --header-h: 72px;
+}

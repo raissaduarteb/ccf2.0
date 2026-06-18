@@ -1,0 +1,88 @@
+/* ===========================================================
+   Cabeçalho fixo + navegação responsiva
+   =========================================================== */
+.site-header {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  z-index: 1000;
+  transition: background-color .25s ease, box-shadow .25s ease, backdrop-filter .25s ease;
+  background: linear-gradient(to bottom, rgba(20,18,16,.55), rgba(20,18,16,0));
+}
+.site-header.is-scrolled {
+  background: rgba(255,255,255,.92);
+  box-shadow: 0 1px 0 rgba(0,0,0,.07);
+  backdrop-filter: saturate(1.4) blur(12px);
+}
+.site-header__bar {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 0 24px;
+  height: var(--header-h);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+/* Logo */
+.brand { display: flex; align-items: center; gap: 11px; text-decoration: none; color: #fff; transition: color .25s ease; }
+.site-header.is-scrolled .brand,
+.site-header.is-scrolled .nav__link,
+.site-header.is-scrolled .nav__btn { color: var(--ink); }
+.brand__mark { width: 34px; height: 34px; border-radius: 9px; background: var(--brand); display: flex; align-items: center; justify-content: center; flex: none; }
+.brand__mark span { display: block; width: 13px; height: 13px; border: 3px solid #fff; border-radius: 50%; }
+.brand__name { display: flex; flex-direction: column; line-height: 1.05; }
+.brand__name b { font-weight: 800; font-size: 15px; letter-spacing: .06em; }
+.brand__name small { font-weight: 500; font-size: 9.5px; letter-spacing: .16em; opacity: .7; white-space: nowrap; }
+
+/* Navegação desktop */
+.nav { display: flex; align-items: center; gap: 4px; }
+.nav__item { position: relative; }
+.nav__link, .nav__btn {
+  display: flex; align-items: center; gap: 6px;
+  background: none; border: none; cursor: pointer;
+  font-family: inherit; font-weight: 600; font-size: 14px; letter-spacing: .02em;
+  color: #fff; text-decoration: none;
+  padding: 10px 14px; border-radius: 10px;
+}
+.nav__caret { display: block; width: 6px; height: 6px; border-right: 2px solid currentColor; border-bottom: 2px solid currentColor; transform: rotate(45deg); margin-top: -3px; opacity: .7; }
+.nav__cta { margin-left: 10px; }
+
+/* Dropdown */
+.nav__menu {
+  position: absolute; top: 100%; left: 0; min-width: 208px; padding: 8px;
+  background: #fff; border-radius: 14px; box-shadow: var(--shadow-pop);
+  border: 1px solid rgba(0,0,0,.06);
+  display: flex; flex-direction: column;
+}
+.nav__menu a { padding: 11px 14px; border-radius: 9px; text-decoration: none; color: #3a3631; font-weight: 500; font-size: 14px; background: none; border: none; cursor: pointer; text-align: left; font-family: inherit; }
+.nav__menu a:hover { background: var(--bg); color: var(--brand); }
+
+/* Botão hambúrguer */
+.nav-toggle { display: none; background: none; border: none; cursor: pointer; padding: 8px; color: #fff; }
+.site-header.is-scrolled .nav-toggle { color: var(--ink); }
+.nav-toggle span { display: block; width: 24px; height: 2px; background: currentColor; border-radius: 2px; }
+.nav-toggle span + span { margin-top: 6px; }
+
+/* Menu mobile em tela cheia */
+.mobile-menu {
+  position: fixed; inset: 0; z-index: 1100;
+  background: var(--charcoal); color: #fff;
+  display: flex; flex-direction: column;
+  padding: 20px 24px 40px;
+  transform: translateY(-100%); opacity: 0; pointer-events: none;
+  transition: transform .32s cubic-bezier(.4,0,.2,1), opacity .32s ease;
+}
+.mobile-menu.is-open { transform: translateY(0); opacity: 1; pointer-events: auto; }
+.mobile-menu__top { display: flex; align-items: center; justify-content: space-between; height: 52px; }
+.mobile-menu__close { background: none; border: none; cursor: pointer; color: #fff; font-size: 30px; line-height: 1; padding: 4px 8px; }
+.mobile-menu__group { margin-top: 18px; display: flex; flex-direction: column; }
+.mobile-menu__label { font-size: 12px; letter-spacing: .18em; color: #8a847a; font-weight: 600; padding: 18px 4px 8px; }
+.mobile-menu__link { padding: 14px 4px; font-size: 20px; font-weight: 600; color: #fff; text-decoration: none; background: none; border: none; border-bottom: 1px solid rgba(255,255,255,.08); text-align: left; cursor: pointer; font-family: inherit; }
+.mobile-menu__cta { margin-top: auto; text-align: center; }
+
+@media (max-width: 920px) {
+  .nav { display: none; }
+  .nav-toggle { display: block; }
+}

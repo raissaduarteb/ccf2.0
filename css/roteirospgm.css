@@ -1,0 +1,13 @@
+/* Roteiros PGM */
+.pgm-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; margin-bottom: 28px; }
+.pgm-head h2 { margin: 0 0 12px; font-size: clamp(1.5rem, 3vw, 2.1rem); font-weight: 800; letter-spacing: -.01em; }
+.pgm-date { display: inline-flex; align-items: center; gap: 8px; background: #fff; border: 1px solid var(--line); border-radius: 999px; padding: 8px 15px; font-size: 13.5px; font-weight: 600; color: var(--ink-soft); }
+.pgm-date i { width: 7px; height: 7px; border-radius: 50%; background: var(--brand); }
+.pgm-viewer { background: #fff; border-radius: 20px; overflow: hidden; box-shadow: 0 2px 4px rgba(0,0,0,.04), 0 16px 40px rgba(0,0,0,.07); border: 1px solid rgba(0,0,0,.05); }
+.pgm-viewer iframe { width: 100%; height: 680px; border: 0; display: block; }
+.pgm-cta { margin-top: 24px; display: flex; align-items: center; justify-content: space-between; gap: 16px; background: var(--charcoal); color: #fff; text-decoration: none; border-radius: 18px; padding: 26px 30px; transition: background-color .2s ease; }
+.pgm-cta:hover { background: var(--charcoal-dark); }
+.pgm-cta small { display: block; font-size: 12px; letter-spacing: .16em; color: var(--peach); font-weight: 700; margin-bottom: 6px; }
+.pgm-cta b { font-size: 1.25rem; font-weight: 800; letter-spacing: -.01em; }
+.pgm-cta__arrow { flex: none; width: 48px; height: 48px; border-radius: 50%; background: var(--brand); display: flex; align-items: center; justify-content: center; font-size: 20px; }
+@media (max-width: 760px) { .pgm-head { flex-direction: column; align-items: flex-start; gap: 18px; } .pgm-viewer iframe { height: 560px; } }
