@@ -33,7 +33,7 @@ window.CCF.Header = function Header({ navigate }) {
   };
 
   return (
-    <header className={"site-header" + (scrolled ? " is-scrolled" : "")}>
+    <header className={"site-header" + (scrolled ? " is-scrolled" : "") + (mobileOpen ? " menu-open" : "")}>
       <div className="site-header__bar">
 
         <a className="brand" href="#/" onClick={go("/")} aria-label="Página inicial">

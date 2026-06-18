@@ -1,87 +1,213 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Comunidade Cristã em Fortaleza</title>
-  <meta name="description" content="Comunidade Cristã em Fortaleza — uma igreja apoiada na Palavra de Deus. Conheça nossas reuniões, locais e como participar.">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Comunidade Cristã em Fortaleza</title>
+    <meta
+      name="description"
+      content="Comunidade Cristã em Fortaleza — uma igreja apoiada na Palavra de Deus. Conheça nossas reuniões, locais e como participar."
+    />
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400;1,6..72,500&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400;1,6..72,500&display=swap"
+      rel="stylesheet"
+    />
 
-  <!-- CSS externo, organizado por área -->
-  <link rel="stylesheet" href="css/variables.css">
-  <link rel="stylesheet" href="css/base.css">
-  <link rel="stylesheet" href="css/header.css">
-  <link rel="stylesheet" href="css/footer.css">
-  <link rel="stylesheet" href="css/home.css">
-  <link rel="stylesheet" href="css/ondeestamos.css">
-  <link rel="stylesheet" href="css/contribuicao.css">
-  <link rel="stylesheet" href="css/faleconosco.css">
-  <link rel="stylesheet" href="css/roteirospgm.css">
-</head>
-<body style="background-color: rgb(245, 241, 237)">
-  <div id="root">
-    <div style="min-height:100vh;display:flex;align-items:center;justify-content:center;background:#F4F1EC">
-      <div style="width:40px;height:40px;border:3px solid rgba(233,78,26,.25);border-top-color:#E94E1A;border-radius:50%;animation:ccfspin .8s linear infinite"></div>
+    <!-- CSS externo, organizado por área -->
+    <link rel="stylesheet" href="css/variables.css" />
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/header.css" />
+    <link rel="stylesheet" href="css/footer.css" />
+    <link rel="stylesheet" href="css/home.css" />
+    <link rel="stylesheet" href="css/ondeestamos.css" />
+    <link rel="stylesheet" href="css/contribuicao.css" />
+    <link rel="stylesheet" href="css/faleconosco.css" />
+    <link rel="stylesheet" href="css/roteirospgm.css" />
+  </head>
+  <body style="background-color: rgb(245, 241, 237)">
+    <div id="root">
+      <div
+        style="
+          min-height: 100vh;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background: #f4f1ec;
+        "
+      >
+        <div
+          style="
+            width: 40px;
+            height: 40px;
+            border: 3px solid rgba(233, 78, 26, 0.25);
+            border-top-color: #e94e1a;
+            border-radius: 50%;
+            animation: ccfspin 0.8s linear infinite;
+          "
+        ></div>
+      </div>
     </div>
-  </div>
-  <style>@keyframes ccfspin{to{transform:rotate(360deg)}}</style>
+    <style>
+      @keyframes ccfspin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+    </style>
 
-  <!-- React (UMD) + Babel standalone (transpila o JSX no navegador, sem etapa de build) -->
-  <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
-  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
-  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <!-- React (UMD) + Babel standalone (transpila o JSX no navegador, sem etapa de build) -->
+    <script
+      crossorigin
+      src="https://unpkg.com/react@18/umd/react.production.min.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"
+    ></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
-  <!-- Dados de conteúdo -->
-  <script src="js/data.js"></script>
+    <!-- Dados de conteúdo -->
+    <script src="js/data.js"></script>
 
-  <!-- Loader: busca cada .jsx, transpila com runtime CLÁSSICO (React.createElement)
+    <!-- Loader: busca cada .jsx, transpila com runtime CLÁSSICO (React.createElement)
        e executa em ordem. O runtime automático geraria `import` de módulo,
        incompatível com scripts clássicos. -->
-  <script>
-    (function () {
-      var FILES = [
-        "js/components/Header.jsx",
-        "js/components/Footer.jsx",
-        "js/components/Lightbox.jsx",
-        "js/pages/Home.jsx",
-        "js/pages/OndeEstamos.jsx",
-        "js/pages/Contribuicao.jsx",
-        "js/pages/FaleConosco.jsx",
-        "js/pages/RoteirosPgm.jsx",
-        "js/app.jsx"
-      ];
-      function run() {
-        var chain = Promise.resolve();
-        FILES.forEach(function (f) {
-          chain = chain
-            .then(function () { return fetch(f); })
-            .then(function (r) {
-              if (!r.ok) throw new Error("Falha ao carregar " + f + " (" + r.status + ")");
-              return r.text();
-            })
-            .then(function (src) {
-              var out = Babel.transform(src, {
-                presets: [["react", { runtime: "classic" }]],
-                filename: f
+    <script>
+      (function () {
+        var FILES = [
+          "js/components/Header.jsx",
+          "js/components/Footer.jsx",
+          "js/components/Lightbox.jsx",
+          "js/pages/Home.jsx",
+          "js/pages/OndeEstamos.jsx",
+          "js/pages/Contribuicao.jsx",
+          "js/pages/FaleConosco.jsx",
+          "js/pages/RoteirosPgm.jsx",
+          "js/app.jsx",
+        ];
+        function run() {
+          var chain = Promise.resolve();
+          FILES.forEach(function (f) {
+            chain = chain
+              .then(function () {
+                return fetch(f);
+              })
+              .then(function (r) {
+                if (!r.ok)
+                  throw new Error(
+                    "Falha ao carregar " + f + " (" + r.status + ")",
+                  );
+                return r.text();
+              })
+              .then(function (src) {
+                var out = Babel.transform(src, {
+                  presets: [["react", { runtime: "classic" }]],
+                  filename: f,
+                });
+                (0, eval)(out.code);
+              })
+              .catch(function (e) {
+                console.error("[CCF]", f, e);
+                throw e;
               });
-              (0, eval)(out.code);
-            })
-            .catch(function (e) { console.error("[CCF]", f, e); throw e; });
-        });
-        return chain;
-      }
-      run();
-    })();
-  </script>
-</body>
+          });
+          return chain;
+        }
+        run();
+      })();
+    </script>
+  </body>
 </html>
 
 <style id="__om-edit-overrides">
-section:nth-child(7) .reveal :is(h1,h2,h3,h4,h5,h6) >:is(h1,h2,h3,h4,h5,h6,p,li,dt,dd,blockquote,figcaption,label,span,a,em,strong,small,td,th,caption) { color: rgb(233, 79, 27) !important }
-#nossavisao .split :is(h1,h2,h3,h4,h5,h6) >:is(h1,h2,h3,h4,h5,h6,p,li,dt,dd,blockquote,figcaption,label,span,a,em,strong,small,td,th,caption) { color: rgb(233, 79, 27) !important }
-#nossavisao .vision .eyebrow { color: rgb(233, 79, 27) !important }
-#root .form-card :is(h1,h2,h3,h4,h5,h6) >:is(h1,h2,h3,h4,h5,h6,p,li,dt,dd,blockquote,figcaption,label,span,a,em,strong,small,td,th,caption) { color: rgb(233, 79, 27) !important }
+  section:nth-child(7)
+    .reveal
+    :is(h1, h2, h3, h4, h5, h6)
+    > :is(
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6,
+      p,
+      li,
+      dt,
+      dd,
+      blockquote,
+      figcaption,
+      label,
+      span,
+      a,
+      em,
+      strong,
+      small,
+      td,
+      th,
+      caption
+    ) {
+    color: rgb(233, 79, 27) !important;
+  }
+  #nossavisao
+    .split
+    :is(h1, h2, h3, h4, h5, h6)
+    > :is(
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6,
+      p,
+      li,
+      dt,
+      dd,
+      blockquote,
+      figcaption,
+      label,
+      span,
+      a,
+      em,
+      strong,
+      small,
+      td,
+      th,
+      caption
+    ) {
+    color: rgb(233, 79, 27) !important;
+  }
+  #nossavisao .vision .eyebrow {
+    color: rgb(233, 79, 27) !important;
+  }
+  #root
+    .form-card
+    :is(h1, h2, h3, h4, h5, h6)
+    > :is(
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6,
+      p,
+      li,
+      dt,
+      dd,
+      blockquote,
+      figcaption,
+      label,
+      span,
+      a,
+      em,
+      strong,
+      small,
+      td,
+      th,
+      caption
+    ) {
+    color: rgb(233, 79, 27) !important;
+  }
 </style>

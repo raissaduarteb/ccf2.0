@@ -19,7 +19,7 @@ button { font-family: inherit; }
 
 /* Layout */
 .container { max-width: var(--maxw); margin: 0 auto; padding: 0 24px; width: 100%; }
-.section { padding: clamp(64px, 9vw, 120px) 0; }
+.section { padding-top: clamp(64px, 9vw, 120px); padding-bottom: clamp(64px, 9vw, 120px); }
 .section--alt { background: var(--bg-alt); }
 .section--dark { background: var(--charcoal); color: #fff; }
 
