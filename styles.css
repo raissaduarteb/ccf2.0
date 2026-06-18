@@ -402,6 +402,9 @@ h2 {
   [data-form-grid] {
     grid-template-columns: 1fr !important;
   }
+  .fc-field--textarea {
+    resize: vertical;
+    min-height: 110px;
 }
 
 /* PGM head */

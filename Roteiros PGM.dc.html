@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="./support.js"></script>
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
 <x-dc>
@@ -11,29 +12,22 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
   <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;1,6..72,400&amp;display=swap" rel="stylesheet">
-  <style>
-    *{ box-sizing:border-box; }
-    body{ margin:0; background:#F4F1EC; }
-    [data-reveal]{ opacity:0; transform:translateY(20px); transition:opacity .6s ease,transform .6s ease; }
-    [data-reveal="in"]{ opacity:1; transform:none; }
-    @media (prefers-reduced-motion:reduce){ [data-reveal]{opacity:1;transform:none;transition:none} }
-    @media (max-width:760px){ [data-pgm-head]{ flex-direction:column !important; align-items:flex-start !important; gap:18px !important; } }
-  </style>
+  
 </helmet>
-<div style="font-family:'Hanken Grotesk',sans-serif;color:#211F1C;background:#F4F1EC;overflow-x:hidden;min-height:100vh;display:flex;flex-direction:column">
+<div class="site-wrapper">
 
   <dc-import name="Header" hint-size="100%,72px"></dc-import>
 
-  <section data-screen-label="Banner" style="position:relative;height:38vh;min-height:280px;display:flex;align-items:flex-end;overflow:hidden">
-    <img src="images/reuniaodepgm.jpeg" alt="Pequeno Grupo Multiplicador" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 50%">
-    <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,17,14,.42),rgba(20,17,14,.8))"></div>
-    <div style="position:relative;max-width:1240px;margin:0 auto;padding:0 24px 44px;width:100%;color:#fff">
+  <section data-screen-label="Banner" class="banner">
+    <img src="images/reuniaodepgm.jpeg" alt="Pequeno Grupo Multiplicador" class="banner-media" style="object-position:center 50%">
+    <div class="banner-overlay"></div>
+    <div class="banner-content">
       <p style="margin: 0 0 12px; font-size: 12px; letter-spacing: .24em; font-weight: 600; color: #e94f1b">PEQUENO GRUPO MULTIPLICADOR</p>
       <h1 style="margin:0;font-size:clamp(2.2rem,5.5vw,3.8rem);font-weight:800;letter-spacing:-.02em;line-height:1.02">Roteiros de <span style="font-family:'Newsreader',serif;font-style:italic;font-weight:400">PGM</span></h1>
     </div>
   </section>
 
-  <div style="max-width:1000px;margin:0 auto;width:100%;padding:clamp(48px,7vw,84px) 24px">
+  <div class="container-wide">
     <div data-reveal="" data-pgm-head="" style="display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:28px">
       <div>
         <p style="margin:0 0 8px;font-size:12px;letter-spacing:.18em;font-weight:700;color:#E94E1A">ROTEIRO ATUAL</p>

@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="./support.js"></script>
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
 <x-dc>
@@ -11,28 +12,17 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
   <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;1,6..72,400&amp;display=swap" rel="stylesheet">
-  <style>
-    *{ box-sizing:border-box; }
-    html{ scroll-behavior:smooth; }
-    body{ margin:0; background:#F4F1EC; }
-    [data-reveal]{ opacity:0; transform:translateY(20px); transition:opacity .6s ease,transform .6s ease; }
-    [data-reveal="in"]{ opacity:1; transform:none; }
-    @media (prefers-reduced-motion:reduce){ [data-reveal]{opacity:1;transform:none;transition:none} }
-    @media (max-width:860px){ [data-loc]{ grid-template-columns:1fr !important; } [data-loc-map]{ min-height:300px !important; } }
-    @media (max-width:600px){ [data-gallery]{ grid-template-columns:1fr 1fr !important; } }
-    [data-gallery] img{ cursor:zoom-in; transition:transform .25s ease,filter .25s ease; }
-    [data-gallery] img:hover{ transform:scale(1.03); filter:brightness(1.04); }
-  </style>
+  
 </helmet>
-<div style="font-family:'Hanken Grotesk',sans-serif;color:#211F1C;background:#F4F1EC;overflow-x:hidden">
+<div class="site-wrapper">
 
   <dc-import name="Header" hint-size="100%,72px"></dc-import>
 
   <!-- BANNER -->
-  <section data-screen-label="Banner" style="position:relative;height:46vh;min-height:340px;display:flex;align-items:flex-end;overflow:hidden">
-    <img src="images/beira_5-26833450.webp" alt="Beira-mar de Fortaleza" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
-    <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,17,14,.5),rgba(20,17,14,.78))"></div>
-    <div style="position:relative;max-width:1240px;margin:0 auto;padding:0 24px 48px;width:100%;color:#fff">
+  <section data-screen-label="Banner" class="banner">
+    <img src="images/beira_5-26833450.webp" alt="Beira-mar de Fortaleza" class="banner-media">
+    <div class="banner-overlay"></div>
+    <div class="banner-content">
       <p style="margin: 0 0 12px; font-size: 12px; letter-spacing: .24em; font-weight: 600; color: #e94f1b">FORTALEZA · CE</p>
       <h1 style="margin:0;font-size:clamp(2.2rem,5.5vw,3.8rem);font-weight:800;letter-spacing:-.02em;line-height:1.02">Onde <span style="font-family:'Newsreader',serif;font-style:italic;font-weight:400">estamos</span></h1>
       <p style="margin:16px 0 0;max-width:52ch;font-size:1.05rem;line-height:1.6;color:rgba(255,255,255,.85)">Reunimos em três casas pela cidade. Encontre a mais perto de você e venha nos visitar.</p>
