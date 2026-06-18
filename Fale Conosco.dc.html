@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,400;1,6..72,400&display=swap" rel="stylesheet">
+  <style>
+    *{ box-sizing:border-box; }
+    body{ margin:0; background:#F4F1EC; }
+    [data-reveal]{ opacity:0; transform:translateY(20px); transition:opacity .6s ease,transform .6s ease; }
+    [data-reveal="in"]{ opacity:1; transform:none; }
+    @media (prefers-reduced-motion:reduce){ [data-reveal]{opacity:1;transform:none;transition:none} }
+    .fc-field{ width:100%; font-family:'Hanken Grotesk',sans-serif; font-size:15px; color:#211F1C; background:#F4F1EC; border:1px solid rgba(0,0,0,.1); border-radius:12px; padding:15px 16px; outline:none; transition:border-color .15s ease,box-shadow .15s ease; }
+    .fc-field::placeholder{ color:#9a948a; }
+    .fc-field:focus{ border-color:#E94E1A; box-shadow:0 0 0 3px rgba(233,78,26,.15); }
+    @media (max-width:840px){ [data-contact-grid]{ grid-template-columns:1fr !important; } [data-form-grid]{ grid-template-columns:1fr !important; } }
+  </style>
+</helmet>
+<div style="font-family:'Hanken Grotesk',sans-serif;color:#211F1C;background:#F4F1EC;overflow-x:hidden;min-height:100vh;display:flex;flex-direction:column">
+
+  <dc-import name="Header" hint-size="100%,72px"></dc-import>
+
+  <section data-screen-label="Banner" style="position:relative;height:40vh;min-height:300px;display:flex;align-items:flex-end;overflow:hidden">
+    <img src="images/espiritualidade-e-religiao-as-maos-postas-em-oracao-sobre-uma-biblia-sagrada-na-igreja-conceito-de-fe.jpg" alt="Mãos em oração sobre a Bíblia" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 35%">
+    <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,17,14,.42),rgba(20,17,14,.78))"></div>
+    <div style="position:relative;max-width:1240px;margin:0 auto;padding:0 24px 48px;width:100%;color:#fff">
+      <p style="margin:0 0 12px;font-size:12px;letter-spacing:.24em;font-weight:600;color:#F1B79E">ESTAMOS POR PERTO</p>
+      <h1 style="margin:0;font-size:clamp(2.2rem,5.5vw,3.8rem);font-weight:800;letter-spacing:-.02em;line-height:1.02">Fale <span style="font-family:'Newsreader',serif;font-style:italic;font-weight:400">conosco</span></h1>
+    </div>
+  </section>
+
+  <div style="max-width:1100px;margin:0 auto;width:100%;padding:clamp(48px,7vw,84px) 24px">
+
+    <div data-reveal data-contact-grid style="display:grid;grid-template-columns:repeat(3,1fr);gap:18px">
+      <a href="https://wa.me/5585997104597" target="_blank" rel="noopener" style="background:#fff;border-radius:18px;padding:28px;text-decoration:none;color:#211F1C;box-shadow:0 2px 4px rgba(0,0,0,.04),0 14px 30px rgba(0,0,0,.05);display:flex;flex-direction:column;gap:16px" style-hover="transform:translateY(-3px)">
+        <span style="width:52px;height:52px;border-radius:14px;background:#FEEEE7;display:flex;align-items:center;justify-content:center"><img src="images/icontelefone.svg" alt="" style="width:24px;height:24px"></span>
+        <span><span style="display:block;font-size:12px;letter-spacing:.1em;color:#8a847a;font-weight:600;margin-bottom:4px">WHATSAPP</span><span style="font-size:16px;font-weight:700">(85) 99710-4597</span></span>
+      </a>
+      <a href="mailto:contato@ccf.org.br" style="background:#fff;border-radius:18px;padding:28px;text-decoration:none;color:#211F1C;box-shadow:0 2px 4px rgba(0,0,0,.04),0 14px 30px rgba(0,0,0,.05);display:flex;flex-direction:column;gap:16px" style-hover="transform:translateY(-3px)">
+        <span style="width:52px;height:52px;border-radius:14px;background:#FEEEE7;display:flex;align-items:center;justify-content:center"><img src="images/iconmail.svg" alt="" style="width:24px;height:24px"></span>
+        <span><span style="display:block;font-size:12px;letter-spacing:.1em;color:#8a847a;font-weight:600;margin-bottom:4px">E-MAIL</span><span style="font-size:16px;font-weight:700;word-break:break-all">contato@ccf.org.br</span></span>
+      </a>
+      <a href="https://www.google.com/maps/place/R.+Lauro+Maia,+1196+-+Jos%C3%A9+Bonifacio,+Fortaleza+-+CE,+60055-295" target="_blank" rel="noopener" style="background:#fff;border-radius:18px;padding:28px;text-decoration:none;color:#211F1C;box-shadow:0 2px 4px rgba(0,0,0,.04),0 14px 30px rgba(0,0,0,.05);display:flex;flex-direction:column;gap:16px" style-hover="transform:translateY(-3px)">
+        <span style="width:52px;height:52px;border-radius:14px;background:#FEEEE7;display:flex;align-items:center;justify-content:center"><img src="images/iconlocation.svg" alt="" style="width:24px;height:24px"></span>
+        <span><span style="display:block;font-size:12px;letter-spacing:.1em;color:#8a847a;font-weight:600;margin-bottom:4px">ENDEREÇO</span><span style="font-size:15px;font-weight:700;line-height:1.35">Rua Lauro Maia, 1196<br>Bairro de Fátima · Fortaleza/CE</span></span>
+      </a>
+    </div>
+
+    <div data-reveal data-form-grid style="margin-top:28px;background:#24211D;border-radius:24px;overflow:hidden;display:grid;grid-template-columns:.85fr 1.15fr">
+      <div style="padding:clamp(32px,4vw,48px);display:flex;flex-direction:column;justify-content:center;color:#fff">
+        <p style="margin:0 0 12px;font-size:12px;letter-spacing:.2em;font-weight:700;color:#F1B79E">QUEREMOS OUVIR VOCÊ</p>
+        <h2 style="margin:0;font-size:clamp(1.6rem,3vw,2.4rem);font-weight:800;letter-spacing:-.01em;line-height:1.1">Mande sua <span style="font-family:'Newsreader',serif;font-style:italic;font-weight:400;color:#F1B79E">mensagem</span></h2>
+        <p style="margin:18px 0 0;font-size:1rem;line-height:1.6;color:#aaa499;max-width:34ch">Dúvidas, pedidos de oração ou apenas um oi — respondemos com carinho.</p>
+      </div>
+      <div style="background:#fff;padding:clamp(28px,3.5vw,40px)">
+        <form action="https://formsubmit.co/contato@ccf.org.br" method="POST" style="display:flex;flex-direction:column;gap:14px">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_next" value="https://ccf.org.br/faleconosco.html">
+          <input class="fc-field" type="text" name="nome" placeholder="Seu nome" aria-label="Nome" required>
+          <input class="fc-field" type="email" name="email" placeholder="Seu e-mail" aria-label="E-mail" required>
+          <input class="fc-field" type="text" name="cidade" placeholder="Cidade / UF" aria-label="Cidade e estado" required>
+          <textarea class="fc-field" name="mensagem" placeholder="Escreva sua mensagem" aria-label="Mensagem" rows="4" required style="resize:vertical;min-height:110px"></textarea>
+          <button type="submit" style="margin-top:4px;font-family:inherit;font-weight:700;font-size:15px;color:#fff;background:#E94E1A;border:none;cursor:pointer;padding:16px;border-radius:12px" style-hover="background:#C7400F">Enviar mensagem</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <dc-import name="Footer" hint-size="100%,420px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  componentDidMount() {
+    const els = document.querySelectorAll('[data-reveal]');
+    if (!('IntersectionObserver' in window)) { els.forEach(el => el.setAttribute('data-reveal','in')); return; }
+    this._io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.setAttribute('data-reveal','in'); this._io.unobserve(e.target); } });
+    }, { threshold: 0.08 });
+    els.forEach(el => this._io.observe(el));
+  }
+  componentWillUnmount() { if (this._io) this._io.disconnect(); }
+}
+</script>
+</body>
+</html>
