@@ -583,13 +583,6 @@ h2 {
 .pos-relative { position: relative; }
 .lh-105 { line-height: 1.05; }
 .btn-outline { background: transparent; border: 1.5px solid rgba(0,0,0,0.18); color: #211f1c; padding: 14px 26px; border-radius: 999px; }
-.brand-title { font-weight: 800; font-size: 18px; color: #fff; }
-.brand-sub { font-weight: 500; font-size: 11px; letter-spacing: 0.12em; color: #8c867b; }
-.muted-text { color: #cfcabf; font-size: 14px; line-height: 1.6; }
-.max-w-280 { max-width: 280px; }
-.footer-heading { font-size: 12px; letter-spacing: 0.16em; color: #7c766c; font-weight: 600; margin-bottom: 4px; display: block; }
-.icon-17 { width: 17px; height: 17px; filter: brightness(0) invert(0.85); }
-.lh-15 { line-height: 1.5; }
 
 
 /* Header / nav utilities */
