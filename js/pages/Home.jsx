@@ -10,32 +10,56 @@ window.CCF.Home = function Home({ navigate }) {
   React.useEffect(() => {
     const API_KEY = "AIzaSyBvuEPxZxqWnC-OT-yVMn-lxdt12fCrYcs";
     const CHANNEL_ID = "UC9RfjDu1HvAVr5PpBnvu4cg";
-    const CACHE_KEY = "ccf_yt_v2";
+    const CACHE_KEY = "ccf_yt_v3";
     const TTL = 60 * 60 * 1000;
+    const PLAYLIST_IDS = [
+      "PL__1Q8-wN2whg9SVmCgxymG2Y2Kr6Su2I",
+      "PL__1Q8-wN2wjpctdlLTFvIBBzhDFC87oc",
+      "PL__1Q8-wN2whcK6ceBOvnfNQpGXEUmLP6",
+      "PL__1Q8-wN2wjC5EcTDL1T6r00xxmT9are",
+    ];
 
     try {
       const c = JSON.parse(localStorage.getItem(CACHE_KEY) || "null");
-      if (c && Date.now() - c.ts < TTL) { setYt(c.data); return; }
+      if (c && Date.now() - c.ts < TTL) {
+        setYt(c.data);
+        return;
+      }
     } catch {}
 
     const uploadsId = CHANNEL_ID.replace(/^UC/, "UU");
     Promise.all([
-      fetch(`https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=${uploadsId}&maxResults=1&key=${API_KEY}`).then(r => r.json()),
-      fetch(`https://www.googleapis.com/youtube/v3/playlists?part=snippet&channelId=${CHANNEL_ID}&maxResults=4&key=${API_KEY}`).then(r => r.json()),
-    ]).then(([vd, pd]) => {
-      const latest = vd.items?.[0] ? {
-        videoId: vd.items[0].snippet.resourceId.videoId,
-        title: vd.items[0].snippet.title,
-      } : null;
-      const playlists = (pd.items || []).map(p => ({
-        id: p.id,
-        title: p.snippet.title,
-        thumb: p.snippet.thumbnails?.medium?.url || p.snippet.thumbnails?.default?.url,
-      }));
-      const data = { latest, playlists };
-      try { localStorage.setItem(CACHE_KEY, JSON.stringify({ ts: Date.now(), data })); } catch {}
-      setYt(data);
-    }).catch(e => console.error("YouTube:", e));
+      fetch(
+        `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=${uploadsId}&maxResults=1&key=${API_KEY}`,
+      ).then((r) => r.json()),
+      fetch(
+        `https://www.googleapis.com/youtube/v3/playlists?part=snippet&id=${PLAYLIST_IDS.join(",")}&key=${API_KEY}`,
+      ).then((r) => r.json()),
+    ])
+      .then(([vd, pd]) => {
+        const latest = vd.items?.[0]
+          ? {
+              videoId: vd.items[0].snippet.resourceId.videoId,
+              title: vd.items[0].snippet.title,
+            }
+          : null;
+        const playlists = (pd.items || []).map((p) => ({
+          id: p.id,
+          title: p.snippet.title,
+          thumb:
+            p.snippet.thumbnails?.medium?.url ||
+            p.snippet.thumbnails?.default?.url,
+        }));
+        const data = { latest, playlists };
+        try {
+          localStorage.setItem(
+            CACHE_KEY,
+            JSON.stringify({ ts: Date.now(), data }),
+          );
+        } catch {}
+        setYt(data);
+      })
+      .catch((e) => console.error("YouTube:", e));
   }, []);
 
   const go = (path, section) => (e) => {
@@ -371,6 +395,25 @@ window.CCF.Home = function Home({ navigate }) {
         </div>
       </section>
 
+      {/* HINÁRIO */}
+      <section className="hinario-banner reveal" data-screen-label="Hinário">
+        <div className="hinario-banner__inner container">
+          <span className="hinario-banner__icon">♪</span>
+          <div className="hinario-banner__text">
+            <h3>Hinário da Igreja</h3>
+            <p>Acesse os hinos cantados na nossa comunidade a qualquer hora.</p>
+          </div>
+          <a
+            className="btn btn--primary"
+            href="https://hinarioccf.netlify.app/"
+            target="_blank"
+            rel="noopener"
+          >
+            Abrir hinário →
+          </a>
+        </div>
+      </section>
+
       {/* REDES SOCIAIS */}
       <section className="section" data-screen-label="Redes">
         <div className="container">
@@ -381,7 +424,7 @@ window.CCF.Home = function Home({ navigate }) {
                   Acesse nossas{" "}
                   <span
                     className="serif-italic"
-                    style={{ color: "var(--peach)" }}
+                    style={{ color: "var(--brand)" }}
                   >
                     redes
                   </span>

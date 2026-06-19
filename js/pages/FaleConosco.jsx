@@ -2,8 +2,36 @@
 window.CCF = window.CCF || {};
 
 window.CCF.FaleConosco = function FaleConosco() {
+  const { useState } = React;
   const D = window.CCF_DATA;
   window.CCF.useReveal();
+
+  const empty = { nome: "", email: "", cidade: "", mensagem: "" };
+  const [fields, setFields] = useState(empty);
+  const [status, setStatus] = useState("idle"); // idle | sending | sent | error
+
+  const set = (k) => (e) => setFields((f) => ({ ...f, [k]: e.target.value }));
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setStatus("sending");
+    fetch("https://formsubmit.co/ajax/" + D.contato.email, {
+      method: "POST",
+      headers: { "Content-Type": "application/json", Accept: "application/json" },
+      body: JSON.stringify({ ...fields, _captcha: "false" }),
+    })
+      .then((r) => r.json())
+      .then((data) => {
+        if (data.success === "true" || data.success === true) {
+          setStatus("sent");
+          setFields(empty);
+        } else {
+          setStatus("error");
+        }
+      })
+      .catch(() => setStatus("error"));
+  };
+
   return (
     <main>
       <section className="page-banner" style={{ height: "40vh", minHeight: "300px" }} data-screen-label="Banner">
@@ -38,14 +66,31 @@ window.CCF.FaleConosco = function FaleConosco() {
             <p>Dúvidas, pedidos de oração ou apenas um oi — respondemos com carinho.</p>
           </div>
           <div className="form-card__body">
-            <form action={"https://formsubmit.co/" + D.contato.email} method="POST">
-              <input type="hidden" name="_captcha" value="false" />
-              <input className="field" type="text" name="nome" placeholder="Seu nome" aria-label="Nome" required />
-              <input className="field" type="email" name="email" placeholder="Seu e-mail" aria-label="E-mail" required />
-              <input className="field" type="text" name="cidade" placeholder="Cidade / UF" aria-label="Cidade e estado" required />
-              <textarea className="field" name="mensagem" placeholder="Escreva sua mensagem" aria-label="Mensagem" rows="4" required></textarea>
-              <button className="btn btn--primary" type="submit">Enviar mensagem</button>
-            </form>
+            {status === "sent" ? (
+              <div className="form-success">
+                <div className="form-success__icon">✓</div>
+                <h3>Mensagem enviada!</h3>
+                <p>Obrigado pelo contato. Responderemos em breve.</p>
+                <button className="btn btn--primary" style={{ marginTop: "20px" }} onClick={() => setStatus("idle")}>
+                  Enviar outra mensagem
+                </button>
+              </div>
+            ) : (
+              <form onSubmit={handleSubmit}>
+                <input className="field" type="text" placeholder="Seu nome" aria-label="Nome" required value={fields.nome} onChange={set("nome")} />
+                <input className="field" type="email" placeholder="Seu e-mail" aria-label="E-mail" required value={fields.email} onChange={set("email")} />
+                <input className="field" type="text" placeholder="Cidade / UF" aria-label="Cidade e estado" required value={fields.cidade} onChange={set("cidade")} />
+                <textarea className="field" placeholder="Escreva sua mensagem" aria-label="Mensagem" rows="4" required value={fields.mensagem} onChange={set("mensagem")}></textarea>
+                {status === "error" && (
+                  <p style={{ color: "var(--brand)", fontSize: "14px", margin: "0" }}>
+                    Ocorreu um erro. Tente novamente ou entre em contato por e-mail.
+                  </p>
+                )}
+                <button className="btn btn--primary" type="submit" disabled={status === "sending"}>
+                  {status === "sending" ? "Enviando…" : "Enviar mensagem"}
+                </button>
+              </form>
+            )}
           </div>
         </div>
       </div>

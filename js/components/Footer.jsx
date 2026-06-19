@@ -75,6 +75,9 @@ window.CCF.Footer = function Footer({ navigate }) {
           <a href="#/roteiros-pgm" onClick={go("/roteiros-pgm")}>
             Roteiros de PGM
           </a>
+          <a href="https://hinarioccf.netlify.app/" target="_blank" rel="noopener">
+            Hinário
+          </a>
         </nav>
 
         <div className="footer-contact">

@@ -124,6 +124,9 @@ window.CCF.Header = function Header({ navigate }) {
                 <a href={D.social.youtube} target="_blank" rel="noopener">
                   Mensagens
                 </a>
+                <a href="https://hinarioccf.netlify.app/" target="_blank" rel="noopener">
+                  Hinário
+                </a>
               </div>
             )}
           </div>
@@ -198,6 +201,15 @@ window.CCF.Header = function Header({ navigate }) {
             onClick={() => setMobileOpen(false)}
           >
             Mensagens
+          </a>
+          <a
+            className="mobile-menu__link"
+            href="https://hinarioccf.netlify.app/"
+            target="_blank"
+            rel="noopener"
+            onClick={() => setMobileOpen(false)}
+          >
+            Hinário
           </a>
         </div>
         <a

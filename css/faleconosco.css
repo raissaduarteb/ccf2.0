@@ -19,4 +19,9 @@
 textarea.field { resize: vertical; min-height: 110px; }
 .form-card button[type="submit"] { margin-top: 4px; padding: 16px; border-radius: 12px; }
 
+.form-success { display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 24px 16px; height: 100%; }
+.form-success__icon { width: 56px; height: 56px; border-radius: 50%; background: #FEEEE7; color: var(--brand); font-size: 26px; font-weight: 800; display: flex; align-items: center; justify-content: center; margin-bottom: 16px; }
+.form-success h3 { font-size: 1.4rem; font-weight: 800; margin: 0 0 8px; }
+.form-success p { color: #6b6560; margin: 0; line-height: 1.6; }
+
 @media (max-width: 840px) { .contact-grid { grid-template-columns: 1fr; } .form-card { grid-template-columns: 1fr; } }

@@ -558,3 +558,40 @@
     display: none;
   }
 }
+
+/* Hinário */
+.hinario-banner {
+  background: var(--charcoal);
+  padding: 28px 0;
+}
+.hinario-banner__inner {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.hinario-banner__icon {
+  font-size: 2rem;
+  color: var(--brand);
+  flex: none;
+  line-height: 1;
+}
+.hinario-banner__text {
+  flex: 1;
+  min-width: 180px;
+}
+.hinario-banner__text h3 {
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin: 0 0 4px;
+}
+.hinario-banner__text p {
+  color: #aaa499;
+  font-size: 0.9rem;
+  margin: 0;
+  line-height: 1.5;
+}
+@media (max-width: 600px) {
+  .hinario-banner__inner { gap: 14px; }
+}
