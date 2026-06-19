@@ -24,6 +24,7 @@
 }
 .site-header.is-scrolled.menu-open {
   backdrop-filter: none;
+  transition: auto;
 }
 .site-header__bar {
   max-width: var(--maxw);

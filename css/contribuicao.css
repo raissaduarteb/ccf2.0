@@ -59,7 +59,7 @@
 .pix-row code {
   flex: 1;
   font-family: ui-monospace, monospace;
-  font-size: 3vw;
+  font-size: clamp(0.75rem, 1vw, 1.5rem);
   font-weight: 600;
   word-break: break-all;
 }

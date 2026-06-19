@@ -124,7 +124,11 @@ window.CCF.Header = function Header({ navigate }) {
                 <a href={D.social.youtube} target="_blank" rel="noopener">
                   Mensagens
                 </a>
-                <a href="https://hinarioccf.netlify.app/" target="_blank" rel="noopener">
+                <a
+                  href="https://hinarioccf.netlify.app/"
+                  target="_blank"
+                  rel="noopener"
+                >
                   Hinário
                 </a>
               </div>
@@ -161,7 +165,11 @@ window.CCF.Header = function Header({ navigate }) {
         <div className="mobile-menu__top">
           <span className="brand">
             <span className="brand__mark">
-              <span></span>
+              <img
+                src="./images/CCF.branco.icone (1).png"
+                alt="logo"
+                style={{ width: "18px" }}
+              />
             </span>
             <span className="brand__name">
               <b>CCF</b>
