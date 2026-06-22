@@ -170,7 +170,7 @@ window.CCF.Home = function Home({ navigate }) {
               />
               <div className="about__badge">
                 <b>+30</b>
-                <small>anos servindo Fortaleza</small>
+                <small>anos servindo Fortaleza e região</small>
               </div>
             </div>
             <div>
