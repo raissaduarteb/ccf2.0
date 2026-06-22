@@ -59,23 +59,21 @@
       }
     </style>
 
-    <!-- React (UMD) + Babel standalone (transpila o JSX no navegador, sem etapa de build) -->
-    <script
-      crossorigin
-      src="https://unpkg.com/react@18/umd/react.production.min.js"
-    ></script>
-    <script
-      crossorigin
-      src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"
-    ></script>
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <!-- React UMD (sempre necessário) -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
 
     <!-- Dados de conteúdo -->
     <script src="js/data.js"></script>
 
-    <!-- Loader: busca cada .jsx, transpila com runtime CLÁSSICO (React.createElement)
-       e executa em ordem. O runtime automático geraria `import` de módulo,
-       incompatível com scripts clássicos. -->
+    <!--
+      Loader otimizado:
+      • Visitas repetidas → lê código já transpilado do localStorage e faz eval direto.
+        Babel não é nem carregado. Carregamento quase instantâneo.
+      • Primeira visita (ou após deploy) → carrega Babel dinamicamente, busca todos
+        os .jsx em paralelo, transpila e salva o resultado no cache.
+      Para forçar re-transpilação após um deploy, basta incrementar CACHE_VER.
+    -->
     <script>
       (function () {
         var FILES = [
@@ -89,35 +87,57 @@
           "js/pages/RoteirosPgm.jsx",
           "js/app.jsx",
         ];
-        function run() {
-          var chain = Promise.resolve();
-          FILES.forEach(function (f) {
-            chain = chain
-              .then(function () {
-                return fetch(f);
-              })
-              .then(function (r) {
-                if (!r.ok)
-                  throw new Error(
-                    "Falha ao carregar " + f + " (" + r.status + ")",
-                  );
-                return r.text();
-              })
-              .then(function (src) {
-                var out = Babel.transform(src, {
-                  presets: [["react", { runtime: "classic" }]],
-                  filename: f,
-                });
-                (0, eval)(out.code);
-              })
-              .catch(function (e) {
-                console.error("[CCF]", f, e);
-                throw e;
-              });
-          });
-          return chain;
+        var CACHE_VER = "v4";
+        var CACHE_KEY = "ccf_compiled_" + CACHE_VER;
+
+        function evalAll(codes) {
+          codes.forEach(function (code) { (0, eval)(code); });
         }
-        run();
+
+        // Cache hit → eval direto, sem Babel
+        try {
+          var hit = JSON.parse(localStorage.getItem(CACHE_KEY) || "null");
+          if (hit && hit.length === FILES.length) {
+            evalAll(hit);
+            return;
+          }
+        } catch (_) {}
+
+        // Cache miss → carregar Babel, buscar .jsx em paralelo, transpilar, salvar
+        function loadScript(src) {
+          return new Promise(function (res, rej) {
+            var s = document.createElement("script");
+            s.src = src;
+            s.onload = res;
+            s.onerror = rej;
+            document.head.appendChild(s);
+          });
+        }
+
+        loadScript("https://unpkg.com/@babel/standalone/babel.min.js")
+          .then(function () {
+            return Promise.all(
+              FILES.map(function (f) {
+                return fetch(f)
+                  .then(function (r) {
+                    if (!r.ok) throw new Error("Falha ao carregar " + f + " (" + r.status + ")");
+                    return r.text();
+                  })
+                  .then(function (src) {
+                    return Babel.transform(src, {
+                      presets: [["react", { runtime: "classic" }]],
+                      filename: f,
+                    }).code;
+                  })
+                  .catch(function (e) { console.error("[CCF]", f, e); throw e; });
+              })
+            );
+          })
+          .then(function (codes) {
+            evalAll(codes);
+            try { localStorage.setItem(CACHE_KEY, JSON.stringify(codes)); } catch (_) {}
+          })
+          .catch(function (e) { console.error("[CCF] boot error", e); });
       })();
     </script>
   </body>
