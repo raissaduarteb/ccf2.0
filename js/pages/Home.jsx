@@ -132,21 +132,31 @@ window.CCF.Home = function Home({ navigate }) {
       </section>
 
       {/* BARRA DE HORÁRIO */}
-      <section className="schedule" aria-label="Próxima reunião">
+      <section className="schedule" aria-label="Reunião no YouTube">
         <div className="schedule__inner">
-          <span className="schedule__live">
-            <i></i>AO VIVO
-          </span>
-          <b>DOMINGO</b>
+          <span className="schedule__dot"></span>
+          <img
+            src="images/youtube.svg"
+            alt=""
+            width="18"
+            height="14"
+            style={{ filter: "brightness(0) invert(1)", opacity: 0.85 }}
+          />
+          <span className="schedule__label">REUNIÃO DO PARTIR DO PÃO</span>
           <span className="schedule__sep"></span>
-          <span className="muted">REUNIÃO DO PARTIR DO PÃO</span>
+          <b>DOMINGO</b>
           <span className="schedule__sep"></span>
           <b>18H</b>
           <a
-            className="btn btn--light btn--sm"
+            className="btn btn--sm"
             href={D.social.youtubeLive}
             target="_blank"
             rel="noopener"
+            style={{
+              background: "rgb(233 79 27)",
+              color: "#fff",
+              border: "none",
+            }}
           >
             Assista online →
           </a>

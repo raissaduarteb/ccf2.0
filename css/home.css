@@ -112,39 +112,31 @@
 .schedule__inner {
   max-width: var(--maxw);
   margin: 0 auto;
-  padding: 20px 24px;
+  padding: 14px 24px;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 14px 28px;
+  gap: 12px 24px;
   justify-content: center;
 }
-.schedule__live {
-  display: inline-flex;
-  align-items: center;
-  gap: 9px;
+.schedule__dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #ff0000;
+  box-shadow: 0 0 0 3px rgba(255, 0, 0, 0.22);
+  flex: none;
+}
+.schedule__label {
   font-size: 11px;
   letter-spacing: 0.16em;
   font-weight: 700;
-  color: var(--brand);
-}
-.schedule__live i {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--brand);
-  box-shadow: 0 0 0 4px rgba(233, 78, 26, 0.22);
+  color: rgba(255, 255, 255, 0.7);
 }
 .schedule b {
   font-weight: 700;
-  font-size: 14px;
+  font-size: 13px;
   letter-spacing: 0.04em;
-}
-.schedule .muted {
-  font-weight: 500;
-  font-size: 14px;
-  letter-spacing: 0.04em;
-  color: #d9d4ca;
 }
 .schedule__sep {
   width: 1px;
@@ -593,5 +585,7 @@
   line-height: 1.5;
 }
 @media (max-width: 600px) {
-  .hinario-banner__inner { gap: 14px; }
+  .hinario-banner__inner {
+    gap: 14px;
+  }
 }
