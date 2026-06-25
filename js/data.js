@@ -42,7 +42,7 @@ window.CCF_DATA = {
       nome: "Granja Portugal",
       endereco: "Rua Taquari, 2455 — Granja Portugal.",
       reunioes: [
-        { quando: "SÁBADO · 19H30", titulo: "Reunião Ministerial" },
+        { quando: "SÁBADO · 19H30", titulo: "Reunião da Palavra" },
         { quando: "SEGUNDA · 20H", titulo: "Reunião de Oração" },
       ],
       galeria: [
@@ -57,7 +57,7 @@ window.CCF_DATA = {
       nome: "José Walter",
       endereco: "Rua N, 515, Montenegro II — José Walter.",
       reunioes: [
-        { quando: "SÁBADO · 19H", titulo: "Reunião Ministerial" },
+        { quando: "SÁBADO · 19H", titulo: "Reunião da Palavra" },
         { quando: "SEGUNDA · 19H30", titulo: "Reunião de Oração" },
       ],
       galeria: [
