@@ -132,33 +132,50 @@ window.CCF.Home = function Home({ navigate }) {
       </section>
 
       {/* BARRA DE HORÁRIO */}
-      <section className="schedule" aria-label="Reunião no YouTube">
+      <section className="schedule" aria-label="Transmissões ao vivo">
         <div className="schedule__inner">
-          <span className="schedule__dot"></span>
-          <img
-            src="images/youtube.svg"
-            alt=""
-            width="18"
-            height="14"
-            style={{ filter: "brightness(0) invert(1)", opacity: 0.85 }}
-          />
-          <span className="schedule__label">REUNIÃO DO PARTIR DO PÃO</span>
-          <span className="schedule__sep"></span>
-          <b>DOMINGO</b>
-          <span className="schedule__sep"></span>
-          <b>18H</b>
           <a
-            className="btn btn--sm"
+            className="schedule__event"
             href={D.social.youtubeLive}
             target="_blank"
             rel="noopener"
-            style={{
-              background: "rgb(233 79 27)",
-              color: "#fff",
-              border: "none",
-            }}
           >
-            Assista online →
+            <span className="schedule__dot"></span>
+            <img
+              src="images/youtube.svg"
+              alt=""
+              width="18"
+              height="14"
+              style={{ filter: "brightness(0) invert(1)", opacity: 0.85 }}
+            />
+            <span className="schedule__label">REUNIÃO DO PARTIR DO PÃO</span>
+            <span className="schedule__sep"></span>
+            <b>DOMINGO</b>
+            <span className="schedule__sep"></span>
+            <b>18H</b>
+          </a>
+
+          <span className="schedule__divider"></span>
+
+          <a
+            className="schedule__event"
+            href={D.social.instagram}
+            target="_blank"
+            rel="noopener"
+          >
+            <span className="schedule__dot schedule__dot--insta"></span>
+            <img
+              src="images/insta.svg"
+              alt=""
+              width="15"
+              height="15"
+              style={{ filter: "brightness(0) invert(1)", opacity: 0.8 }}
+            />
+            <span className="schedule__label">LIVE MATINAL</span>
+            <span className="schedule__sep"></span>
+            <b>SEG–SEX</b>
+            <span className="schedule__sep"></span>
+            <b>6H30</b>
           </a>
         </div>
       </section>
