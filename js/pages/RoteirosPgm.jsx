@@ -5,19 +5,58 @@ window.CCF.RoteirosPgm = function RoteirosPgm() {
   const D = window.CCF_DATA;
   window.CCF.useReveal();
 
-  // roteiro de data mais recente
-  const atual = [...D.roteiros].sort(
+  const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxhWfafxScxSBDJ-uXX22bOoWwWWcxsSHrVCiO5YkcfZd1aqYzDlvxux_5UnCCVAg3Edg/exec";
+  const CACHE_KEY = "ccf_pgm_v2";
+  const TTL = 60 * 60 * 1000;
+
+  // Inicia com o fallback do data.js enquanto a API carrega
+  const fallback = [...D.roteiros].sort(
     (a, b) => new Date(b.data) - new Date(a.data),
-  )[0];
-  const dataFmt = atual
-    ? new Date(atual.data + "T00:00:00").toLocaleDateString("pt-BR", {
+  )[0] || null;
+
+  const [roteiro, setRoteiro] = React.useState(fallback);
+  const [erro, setErro] = React.useState(false);
+
+  React.useEffect(() => {
+    try {
+      const c = JSON.parse(localStorage.getItem(CACHE_KEY) || "null");
+      if (c && Date.now() - c.ts < TTL) {
+        setRoteiro(c.data);
+        return;
+      }
+    } catch {}
+
+    fetch(SCRIPT_URL)
+      .then(function (r) { return r.json(); })
+      .then(function (data) {
+        const files = Array.isArray(data) ? data : (data.files || []);
+        if (files.length === 0) return;
+        const latest = files[0];
+        const result = {
+          driveId: latest.id,
+          data: latest.createdTime.slice(0, 10),
+        };
+        setRoteiro(result);
+        try {
+          localStorage.setItem(CACHE_KEY, JSON.stringify({ ts: Date.now(), data: result }));
+        } catch {}
+      })
+      .catch(function (e) {
+        console.error("[CCF] Drive API:", e);
+        setErro(true);
+      });
+  }, []);
+
+  const dataFmt = roteiro
+    ? new Date(roteiro.data + "T00:00:00").toLocaleDateString("pt-BR", {
         day: "numeric",
         month: "long",
         year: "numeric",
       })
     : null;
-  const viewerSrc = atual
-    ? "https://drive.google.com/file/d/" + atual.driveId + "/preview"
+
+  const viewerSrc = roteiro
+    ? "https://drive.google.com/file/d/" + roteiro.driveId + "/preview"
     : null;
 
   return (
@@ -50,6 +89,11 @@ window.CCF.RoteirosPgm = function RoteirosPgm() {
             {dataFmt && (
               <span className="pgm-date">
                 <i></i>Adicionado em {dataFmt}
+              </span>
+            )}
+            {erro && (
+              <span style={{ fontSize: "13px", color: "var(--ink-muted)", display: "block", marginTop: "6px" }}>
+                Não foi possível verificar novos roteiros agora.
               </span>
             )}
           </div>
