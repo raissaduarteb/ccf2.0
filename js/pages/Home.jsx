@@ -148,7 +148,7 @@ window.CCF.Home = function Home({ navigate }) {
               height="14"
               style={{ filter: "brightness(0) invert(1)", opacity: 0.85 }}
             />
-            <span className="schedule__label">REUNIÃO DO PARTIR DO PÃO</span>
+            <span className="schedule__label">PARTIR DO PÃO</span>
             <span className="schedule__sep"></span>
             <b>DOMINGO</b>
             <span className="schedule__sep"></span>
